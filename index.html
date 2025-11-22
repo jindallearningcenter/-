@@ -194,7 +194,6 @@
     }
     
     /* Enhanced Hero Section */
-    /* Hero Section */
     .hero {
       background: linear-gradient(135deg, rgba(30,58,95,0.9), rgba(44,85,48,0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
@@ -456,7 +455,7 @@
     
     /* Enhanced Home Page Achievements & Programs */
     .home-sections {
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -506,7 +505,7 @@
       overflow: hidden;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
       transition: var(--transition);
-      background: white;
+      background: #2c4a6d;
       position: relative;
       opacity: 0;
       transform: translateY(30px);
@@ -522,15 +521,18 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
     
-    .home-card img {
+    /* FIXED: Full-width image display without black bars */
+    .home-card img, .home-card video, .home-card iframe {
       width: 100%;
-      height: 150px;
-      object-fit: cover;
+      height: 350px;
+      object-fit: cover; /* Changed from cover to contain to show full image */
+      background-color: #f8f9fa; /* Light background instead of black */
       transition: var(--transition);
+      display: block;
     }
     
-    .home-card:hover img {
-      transform: scale(1.1);
+    .home-card:hover img, .home-card:hover video, .home-card:hover iframe {
+      transform: scale(1.05);
     }
     
     .home-card-content {
@@ -540,13 +542,13 @@
     .home-card h4 {
       font-size: 1rem;
       margin-bottom: 8px;
-      color: var(--primary);
+      color: white;
       font-weight: 600;
     }
     
     .home-card p {
       font-size: 0.85rem;
-      color: #666;
+      color: white;
       line-height: 1.5;
     }
     
@@ -592,7 +594,7 @@
     /* Enhanced Data Display Sections */
     .data-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 30px;
       max-width: 1400px;
       margin: 0 auto;
@@ -600,7 +602,7 @@
     }
     
     .data-card {
-      background: white;
+      background: #2c4a6d;
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -620,14 +622,17 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
     
-    .data-card img {
+    /* FIXED: Full-width image display without black bars */
+    .data-card img, .data-card video, .data-card iframe {
       width: 100%;
-      height: 220px;
-      object-fit: cover;
+      height: 320px;
+      object-fit: contain; /* Changed from cover to contain to show full image */
+      background-color: #f8f9fa; /* Light background instead of black */
       transition: var(--transition);
+      display: block;
     }
     
-    .data-card:hover img {
+    .data-card:hover img, .data-card:hover video, .data-card:hover iframe {
       transform: scale(1.05);
     }
     
@@ -637,13 +642,13 @@
     
     .data-card h3 {
       margin-bottom: 15px;
-      color: var(--primary);
+      color: white;
       font-size: 1.4rem;
       font-weight: 700;
     }
     
     .data-card p {
-      color: #666;
+      color: white;
       font-size: 1rem;
       line-height: 1.6;
     }
@@ -1154,7 +1159,7 @@
         </div>
     
         <div class="hero-image">
-          <img src="https://scontent.fluh1-1.fna.fbcdn.net/v/t39.30808-6/486243794_2056267864870472_7318064059810428444_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UteMLFjU8MkQ7kNvwEyl07P&_nc_oc=Adl14M7zLcwQGasCvR-1VQibT14TtqSIWYh2ASlFFzvb_LoLEm-iUeWDeBdUWevFdULj3eIuiNwZ64axFZUYn7QX&_nc_zt=23&_nc_ht=scontent.fluh1-1.fna&_nc_gid=RgwypfCX34bZC3tz_MDtWQ&oh=00_AfgjEdBSjETc9QcwiBK_X8CAdmk0X0iM8K1uZne3T40ZFQ&oe=69270FE3"" alt="Jindal Learning Centre Coaching Poster">
+          <img src="https://scontent.fluh1-1.fna.fbcdn.net/v/t39.30808-6/486243794_2056267864870472_7318064059810428444_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UteMLFjU8MkQ7kNvwEyl07P&_nc_oc=Adl14M7zLcwQGasCvR-1VQibT14TtqSIWYh2ASlFFzvb_LoLEm-iUeWDeBdUWevFdULj3eIuiNwZ64axFZUYn7QX&_nc_zt=23&_nc_ht=scontent.fluh1-1.fna&_nc_gid=RgwypfCX34bZC3tz_MDtWQ&oh=00_AfgjEdBSjETc9QcwiBK_X8CAdmk0X0iM8K1uZne3T40ZFQ&oe=69270FE3" alt="Jindal Learning Centre Coaching Poster">
         </div>
       </div>
     
@@ -1538,6 +1543,79 @@
       dataCards.forEach(card => observer.observe(card));
     }
 
+    // Function to check if a URL is a video
+    function isVideo(url) {
+      const videoExtensions = ['.mp4', '.avi', '.mov', '.wmv', '.flv', '.webm', '.mkv'];
+      const videoDomains = ['youtube.com', 'youtu.be', 'vimeo.com', 'drive.google.com'];
+      
+      // Check for video file extensions
+      for (let ext of videoExtensions) {
+        if (url.toLowerCase().includes(ext)) {
+          return true;
+        }
+      }
+      
+      // Check for video domains
+      for (let domain of videoDomains) {
+        if (url.toLowerCase().includes(domain)) {
+          return true;
+        }
+      }
+      
+      return false;
+    }
+
+    // Function to generate embed URL for Google Drive videos
+    function getGoogleDriveEmbedUrl(url) {
+      // Extract file ID from Google Drive URL
+      const match = url.match(/\/d\/([^\/]+)/);
+      if (match && match[1]) {
+        return `https://drive.google.com/file/d/${match[1]}/preview`;
+      }
+      return url;
+    }
+
+    // Function to create media element (image or video)
+    function createMediaElement(url, alt) {
+      if (isVideo(url)) {
+        // Handle Google Drive videos specifically
+        if (url.includes('drive.google.com')) {
+          const iframe = document.createElement('iframe');
+          iframe.src = getGoogleDriveEmbedUrl(url);
+          iframe.width = '100%';
+          iframe.height = '200';
+          iframe.frameBorder = '0';
+          iframe.allow = 'autoplay';
+          iframe.style.borderRadius = '15px 15px 0 0';
+          return iframe;
+        }
+        
+        const video = document.createElement('video');
+        video.src = url;
+        video.alt = alt;
+        video.controls = true;
+        video.autoplay = true;
+        video.muted = true; // Required for autoplay in most browsers
+        video.loop = true;
+        video.style.width = '100%';
+        video.style.height = 'auto';
+        video.style.maxHeight = '200px';
+        video.style.objectFit = 'contain'; // Changed to contain
+        video.style.backgroundColor = '#f8f9fa'; // Light background
+        video.style.borderRadius = '15px 15px 0 0';
+        
+        return video;
+      } else {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = alt;
+        img.style.borderRadius = '15px 15px 0 0';
+        img.style.objectFit = 'contain'; // Changed to contain
+        img.style.backgroundColor = '#f8f9fa'; // Light background
+        return img;
+      }
+    }
+
     function loadHomeData() {
       // Load achievements for home page (4x2 grid) in reverse order
       const achievementsUrl = BASE_URL + '0';
@@ -1550,18 +1628,21 @@
       
           // Take only first 8 items for 4x2 grid in reverse order (newest first)
           rows.slice(1).reverse().slice(0, 8).forEach(row => {
-            const [id, title, img, desc] = row;
+            const [id, title, mediaUrl, desc] = row;
       
             const card = document.createElement("div");
             card.className = "home-card";
+            
+            const mediaElement = createMediaElement(mediaUrl, title);
+            
             card.innerHTML = `
-              <img src="${img}" alt="${title}" />
               <div class="home-card-content">
                 <h4>${title}</h4>
                 <p>${desc.substring(0, 50)}...</p>
               </div>
             `;
-      
+            
+            card.prepend(mediaElement);
             container.appendChild(card);
           });
           
@@ -1592,18 +1673,21 @@
       
           // Take only first 8 items for 4x2 grid in reverse order (newest first)
           rows.slice(1).reverse().slice(0, 8).forEach(row => {
-            const [id, title, img, desc] = row;
+            const [id, title, mediaUrl, desc] = row;
       
             const card = document.createElement("div");
             card.className = "home-card";
+            
+            const mediaElement = createMediaElement(mediaUrl, title);
+            
             card.innerHTML = `
-              <img src="${img}" alt="${title}" />
               <div class="home-card-content">
                 <h4>${title}</h4>
                 <p>${desc.substring(0, 50)}...</p>
               </div>
             `;
-      
+            
+            card.prepend(mediaElement);
             container.appendChild(card);
           });
           
@@ -1635,18 +1719,21 @@
       
           // Display all achievements in reverse order (newest first)
           rows.slice(1).reverse().forEach(row => {
-            const [id, title, img, desc] = row;
+            const [id, title, mediaUrl, desc] = row;
       
             const card = document.createElement("div");
             card.className = "data-card";
+            
+            const mediaElement = createMediaElement(mediaUrl, title);
+            
             card.innerHTML = `
-              <img src="${img}" alt="${title}" />
               <div class="data-card-content">
                 <h3>${title}</h3>
                 <p>${desc}</p>
               </div>
             `;
-      
+            
+            card.prepend(mediaElement);
             container.appendChild(card);
           });
           
@@ -1678,18 +1765,21 @@
       
           // Display all programs in reverse order (newest first)
           rows.slice(1).reverse().forEach(row => {
-            const [id, title, img, desc] = row;
+            const [id, title, mediaUrl, desc] = row;
       
             const card = document.createElement("div");
             card.className = "data-card";
+            
+            const mediaElement = createMediaElement(mediaUrl, title);
+            
             card.innerHTML = `
-              <img src="${img}" alt="${title}" />
               <div class="data-card-content">
                 <h3>${title}</h3>
                 <p>${desc}</p>
               </div>
             `;
-      
+            
+            card.prepend(mediaElement);
             container.appendChild(card);
           });
           
