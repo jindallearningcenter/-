@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jindal Learning Centre</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #1e3a5f;
+      --secondary: #2c5530;
+      --accent: #d4af37;
+      --light: #f8f9fa;
+      --dark: #2d3748;
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    body {
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      overflow-x: hidden;
+    }
+    
+    /* Enhanced Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), #2c4a6d);
+      color: white;
+      padding: 1rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .logo {
+      width: 70px;
+      height: 70px;
+      background: white;
+      border-radius: 50%;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--primary);
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .logo::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .logo:hover::before {
+      opacity: 1;
+      animation: logoShine 2s infinite;
+    }
+    
+    .logo:hover {
+      transform: rotate(10deg) scale(1.05);
+    }
+    
+    @keyframes logoShine {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    
+    .academy-name h1 {
+      font-size: 2rem;
+      margin-bottom: 5px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+    
+    .academy-name p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav li {
+      margin-left: 10px;
+      position: relative;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+    
+    /* Enhanced Navigation Style */
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform: translateX(-50%);
+    }
+    
+    nav a:hover::after, nav a.active::after {
+      width: 80%;
+    }
+    
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    /* Enhanced Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 5px;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .menu-toggle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+    
+    .menu-toggle:hover::before {
+      left: 100%;
+    }
+    
+    .menu-toggle:hover {
+      background: rgba(255,255,255,0.1);
+      transform: scale(1.1);
+    }
+    
+    /* Enhanced Hero Section */
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(30,58,95,0.9), rgba(44,85,48,0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+    
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-content h2 {
+      font-size: 3.2rem;
+      margin-bottom: 25px;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .hero-content p {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    
+    .hero-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: var(--transition);
+      animation: fadeInRight 1s ease-out;
+    }
+    
+    .hero-image:hover {
+      transform: perspective(1000px) rotateY(0deg) scale(1.03);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: white;
+      opacity: 0.8;
+      animation: bounce 2s infinite;
+    }
+    
+    .scroll-indicator span {
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+    
+    .scroll-indicator i {
+      font-size: 1.5rem;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(-5px);
+      }
+    }
+    
+    /* Enhanced Teachers Section */
+    .teachers {
+      background: var(--light);
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .teachers::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e3a5f' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .teachers-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .teacher-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      transform: perspective(1000px) rotateY(5deg);
+      transition: var(--transition);
+    }
+    
+    .teacher-image:hover {
+      transform: perspective(1000px) rotateY(0deg) scale(1.03);
+    }
+    
+    .teacher-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+    
+    .teacher-content h2 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .teacher-content h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 5px;
+    }
+    
+    .teacher-content p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+    
+    .skills {
+      margin-top: 30px;
+    }
+    
+    .skill-item {
+      margin-bottom: 20px;
+    }
+    
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    .skill-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .skill-level {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 10px;
+      position: relative;
+      transition: width 1.5s ease-in-out;
+      width: 0; /* Start at 0 for animation */
+    }
+    
+    .skill-level::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    /* Enhanced Section Styles */
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-header h2 {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 5px;
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #666;
+      font-size: 1.2rem;
+    }
+    
+    /* Enhanced Home Page Achievements & Programs */
+    .home-sections {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .home-section {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      margin-bottom: 50px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .home-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+    
+    .home-section:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .home-section h3 {
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      color: var(--primary);
+      text-align: center;
+      font-weight: 700;
+    }
+    
+    .home-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    
+    .home-card {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: var(--transition);
+      background: white;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .home-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .home-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .home-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .home-card:hover img {
+      transform: scale(1.1);
+    }
+    
+    .home-card-content {
+      padding: 15px;
+    }
+    
+    .home-card h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    .home-card p {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .section-btn {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      padding: 12px 30px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      width: 250px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: var(--transition);
+    }
+    
+    .section-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    .section-btn:hover::before {
+      left: 100%;
+    }
+    
+    /* Enhanced Data Display Sections */
+    .data-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .data-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: var(--transition);
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .data-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .data-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .data-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .data-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .data-card-content {
+      padding: 25px;
+    }
+    
+    .data-card h3 {
+      margin-bottom: 15px;
+      color: var(--primary);
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    
+    .data-card p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    
+    /* Enhanced Contact Section */
+    .contact {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      position: relative;
+    }
+    
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%231e3a5f' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    
+    .contact-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .contact-info h2 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: var(--primary);
+      font-weight: 700;
+      position: relative;
+    }
+    
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      border-radius: 5px;
+    }
+    
+    .contact-details {
+      margin-bottom: 40px;
+    }
+    
+    .contact-item {
+      display: flex;
+      margin-bottom: 25px;
+      transition: var(--transition);
+    }
+    
+    .contact-item:hover {
+      transform: translateX(10px);
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      font-size: 1.2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+    
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .contact-text h4 {
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      height: 450px;
+      transition: var(--transition);
+    }
+    
+    .map-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* Enhanced Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary), #152642);
+      color: white;
+      padding: 60px 0 20px;
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+    
+    .footer-col h3 {
+      margin-bottom: 25px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .footer-col p, .footer-col a {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 12px;
+      display: block;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-col a:hover {
+      color: white;
+      transform: translateX(5px);
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Page Content */
+    .page-content {
+      display: none;
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    .page-content.active {
+      display: block;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    /* Enhanced Mobile Navigation Drawer */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      z-index: 2000;
+      transition: var(--transition);
+      box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      padding: 80px 30px 30px;
+    }
+    
+    .mobile-nav.active {
+      right: 0;
+    }
+    
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 0;
+      font-size: 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .mobile-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.6s ease;
+    }
+    
+    .mobile-nav a:hover::after, .mobile-nav a.active::after {
+      width: 100%;
+    }
+    
+    .mobile-nav a:hover {
+      color: var(--accent);
+      padding-left: 10px;
+    }
+    
+    .close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+    
+    .close-menu:hover {
+      background: rgba(255,255,255,0.1);
+      transform: scale(1.1);
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1500;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Floating Elements for Visual Interest */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .floating-element {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .home-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .hero-container, .teachers-container, .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .hero-image, .teacher-image {
+        order: -1;
+        transform: none;
+      }
+      
+      .hero-image:hover, .teacher-image:hover {
+        transform: scale(1.03);
+      }
+      
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 25px;
+        right: 20px;
+      }
+      
+      .home-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .data-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .hero-content h2 {
+        font-size: 2.5rem;
+      }
+      
+      .section-header h2 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .home-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .data-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .home-section {
+        padding: 30px 20px;
+      }
+      
+      .hero-content h2 {
+        font-size: 2.2rem;
+      }
+      
+      .teacher-content h2, .contact-info h2 {
+        font-size: 2.2rem;
+      }
+      
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero-content h2, .teacher-content h2, .contact-info h2, .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero {
+        padding: 80px 0;
+      }
+      
+      .section {
+        padding: 80px 0;
+      }
+      
+      .teachers, .contact {
+        padding: 80px 0;
+      }
+      
+      .logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+      }
+      
+      .academy-name h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Navigation Overlay -->
+  <div class="overlay" id="overlay"></div>
+  
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-menu" id="closeMenu">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="#" class="nav-link active" data-page="home">Home</a>
+    <a href="#" class="nav-link" data-page="achievements">Achievements</a>
+    <a href="#" class="nav-link" data-page="programs">Programs</a>
+    <a href="#" class="nav-link" data-page="contact">Contact</a>
+  </div>
+
+  <!-- Header Section -->
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <div class="logo">JLC</div>
+        <div class="academy-name">
+          <h1>Jindal Learning Centre</h1>
+          <p>Where Strong Concepts Build Bright Futures</p>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+          <li><a href="#" class="nav-link" data-page="achievements">Achievements</a></li>
+          <li><a href="#" class="nav-link" data-page="programs">Programs</a></li>
+          <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Home Page -->
+  <section id="home" class="page-content active">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="floating-elements" id="floatingElements"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h2>Jindal Learning Centre</h2>
+          <p>At Jindal Learning Centre, we believe in nurturing young minds and empowering them to achieve their fullest potential. Our holistic approach to education combines academic excellence with character development.</p> <p>With state-of-the-art facilities, we provide a stimulating learning environment that encourages curiosity, creativity, and critical thinking. Our mission is to shape future leaders who will make a positive impact on society through knowledge, skills, and values.</p>
+          <h3>Excellent Coaching For</h3>
+          <br>
+          <h4>Mathematics & Science – 9th & 10th</h4>
+          <h4>NTSE, Olympiad & All Scholarship Exams</h4>
+          <h4>Mathematics Classes – +1 & +2</h4>
+          <h4>IIT-JEE, NDA & Competitive Exams</h4>
+          <br>
+          <p>Join the most trusted academy to excel in school academics & competitive examinations with strong fundamentals and expert guidance.</p>
+        </div>
+    
+        <div class="hero-image">
+          <img src="https://scontent.fluh1-1.fna.fbcdn.net/v/t39.30808-6/486243794_2056267864870472_7318064059810428444_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UteMLFjU8MkQ7kNvwEyl07P&_nc_oc=Adl14M7zLcwQGasCvR-1VQibT14TtqSIWYh2ASlFFzvb_LoLEm-iUeWDeBdUWevFdULj3eIuiNwZ64axFZUYn7QX&_nc_zt=23&_nc_ht=scontent.fluh1-1.fna&_nc_gid=RgwypfCX34bZC3tz_MDtWQ&oh=00_AfgjEdBSjETc9QcwiBK_X8CAdmk0X0iM8K1uZne3T40ZFQ&oe=69270FE3"" alt="Jindal Learning Centre Coaching Poster">
+        </div>
+      </div>
+    
+      <div class="scroll-indicator">
+        <span>Scroll to Explore</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+    
+    <!-- Teachers Section -->
+    <section class="teachers">
+      <div class="teachers-container">
+        <div class="teacher-content">
+          <h2>Our Expert Faculty</h2>
+          <p>Led by highly qualified and experienced educator Mr. Rohit Jindal, we ensure conceptual clarity and exam-focused preparation for every student.</p>
+          <p>Our teaching methodology empowers students with logical thinking, confidence, and problem-solving skills for top academic results.</p>
+    
+          <div class="skills">
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Subject Expertise</span>
+                <span>98%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" data-width="98%"></div>
+              </div>
+            </div>
+    
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Exam-Focused Teaching</span>
+                <span>95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" data-width="95%"></div>
+              </div>
+            </div>
+    
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Student Engagement</span>
+                <span>93%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" data-width="93%"></div>
+              </div>
+            </div>
+    
+            <div class="skill-item">
+              <div class="skill-name">
+                <span>Competitive Preparedness</span>
+                <span>97%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" data-width="97%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="teacher-image">
+          <img src="https://scontent.fluh1-3.fna.fbcdn.net/v/t1.6435-9/42439885_2157502270949648_8593840418079113216_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=FurTfOho_3gQ7kNvwHXjlFD&_nc_oc=Adm0Fm3uFYUFo7UgsclITMqqLbcOXtOpYCoXN9P2_NcBkziQqqCXhkki5aQTU2Qn2VBZPDYzgMEBhMhgSTwxzKK2&_nc_zt=23&_nc_ht=scontent.fluh1-3.fna&_nc_gid=9sh1nyLEvtkJLZYkT6KluA&oh=00_Afin5vc1QhmBo9DAA5qtPik-F29TB2BqbIqom3LwxY70SQ&oe=6948B353"
+          alt="Our Faculty">
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- Home Page Achievements & Programs -->
+    <section class="section">
+      <div class="home-sections">
+        <div class="home-section">
+          <h3>Achievements</h3>
+          <div class="home-container" id="home-achievements">
+            <!-- 4x2 grid of achievements will be loaded here in reverse order -->
+          </div>
+          <a href="#" class="section-btn" data-page="achievements">View All Achievements</a>
+        </div>
+        
+        <div class="home-section">
+          <h3>Programs</h3>
+          <div class="home-container" id="home-programs">
+            <!-- 4x2 grid of programs will be loaded here in reverse order -->
+          </div>
+          <a href="#" class="section-btn" data-page="programs">View All Programs</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Achievements Page -->
+  <section id="achievements" class="page-content">
+    <div class="section">
+      <div class="section-header">
+        <h2>Our Achievements</h2>
+        <p>Celebrating the successes and milestones of our students and institution</p>
+      </div>
+      
+      <div id="achievements-content" class="data-container">
+        <!-- Achievements data will be loaded here in reverse order -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs Page -->
+  <section id="programs" class="page-content">
+    <div class="section">
+      <div class="section-header">
+        <h2>Our Programs</h2>
+        <p>Comprehensive educational programs designed to meet diverse learning needs</p>
+      </div>
+      
+      <div id="programs-content" class="data-container">
+        <!-- Programs data will be loaded here in reverse order -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Page -->
+  <section id="contact" class="page-content">
+    <section class="contact">
+      <div class="contact-container">
+        <div class="contact-info">
+          <h2>Contact Us</h2>
+          <p>We'd love to hear from you. Get in touch with us for any queries or information.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Address</h4>
+                <p>X9QX+HM8, Jain School St, Sadar, Mansa, Punjab 151505</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Phone</h4>
+                <p>+91 98781 94520</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p>jindallearningcenters@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Working Hours</h4>
+                <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                <p>Saturday-Sunday: 9:00 AM - 5:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3455.669817828031!2d75.3991922!3d29.988917700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39111f637ca771db%3A0xfb036d3df191fc51!2sJindal%20Learning%20Centre!5e0!3m2!1sen!2sin!4v1763788898066!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Jindal Learning Centre</h3>
+        <p>Empowering minds through quality education since 2005. Our commitment is to provide holistic learning experiences that shape future leaders.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <a href="#" class="nav-link" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="achievements">Achievements</a>
+        <a href="#" class="nav-link" data-page="programs">Programs</a>
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Programs</h3>
+        <a href="#" class="nav-link" data-page="programs">Mathematics & Science</a>
+        <a href="#" class="nav-link" data-page="programs">NTSE</a>
+        <a href="#" class="nav-link" data-page="programs">IIT-JEE</a>
+        <a href="#" class="nav-link" data-page="programs">NDA & Competitive Exams</a>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Connect With Us</h3>
+        <a href="https://www.facebook.com/p/Jindal-Learning-CentreMansa-100070001903574/">FaceBook</a>
+        <a href="https://www.youtube.com/channel/UCLgCa6UBY5mAax4HKQZVg2Q">YouTube</a>
+        <a href="https://www.instagram.com/jindal_learning_centre_mansa/">Instagram</a>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2023 Jindal Learning Centre. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Google Sheet CSV URL using gid parameter
+    const BASE_URL =
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vROgRlDzBd9tuG5E5vMQ7vmDvT5WD2kQJmb52bz1wMZLm5q6O-vzrA7wYfAOWY12w8oCVTxoxz-sSAY/pub?output=csv&gid=";
+
+    // Mobile Navigation
+    const menuToggle = document.getElementById('menuToggle');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('overlay');
+    
+    menuToggle.addEventListener('click', function() {
+      mobileNav.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenu.addEventListener('click', function() {
+      mobileNav.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    overlay.addEventListener('click', function() {
+      mobileNav.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Navigation between pages
+    document.addEventListener("DOMContentLoaded", function() {
+      // Set up navigation
+      const navLinks = document.querySelectorAll(".nav-link");
+      const pageContents = document.querySelectorAll(".page-content");
+      
+      navLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          
+          // Close mobile menu if open
+          mobileNav.classList.remove('active');
+          overlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+          
+          // Remove active class from all links and pages
+          navLinks.forEach(l => l.classList.remove("active"));
+          pageContents.forEach(p => p.classList.remove("active"));
+          
+          // Add active class to clicked link and corresponding page
+          this.classList.add("active");
+          const pageId = this.getAttribute("data-page");
+          document.getElementById(pageId).classList.add("active");
+          
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          
+          // Load data for the page if needed
+          if (pageId === "achievements") {
+            loadAchievementsData();
+          } else if (pageId === "programs") {
+            loadProgramsData();
+          }
+        });
+      });
+      
+      // Set up section buttons
+      const sectionBtns = document.querySelectorAll(".section-btn");
+      sectionBtns.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+          e.preventDefault();
+          const pageId = this.getAttribute("data-page");
+          
+          // Remove active class from all links and pages
+          navLinks.forEach(l => l.classList.remove("active"));
+          pageContents.forEach(p => p.classList.remove("active"));
+          
+          // Add active class to corresponding link and page
+          document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add("active");
+          document.getElementById(pageId).classList.add("active");
+          
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          
+          // Load data for the page
+          if (pageId === "achievements") {
+            loadAchievementsData();
+          } else if (pageId === "programs") {
+            loadProgramsData();
+          }
+        });
+      });
+      
+      // Create floating elements
+      createFloatingElements();
+      
+      // Load home page data
+      loadHomeData();
+      
+      // Set up scroll animations
+      setupScrollAnimations();
+      
+      // Animate skill bars when they come into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const skillLevels = entry.target.querySelectorAll('.skill-level');
+            skillLevels.forEach(level => {
+              const width = level.getAttribute('data-width');
+              level.style.width = '0';
+              setTimeout(() => {
+                level.style.width = width;
+              }, 300);
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      const skillsSection = document.querySelector('.skills');
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
+    });
+
+    function createFloatingElements() {
+      const container = document.getElementById('floatingElements');
+      const count = 15;
+      
+      for (let i = 0; i < count; i++) {
+        const element = document.createElement('div');
+        element.classList.add('floating-element');
+        
+        // Random properties
+        const size = Math.random() * 20 + 5;
+        const left = Math.random() * 100;
+        const animationDuration = Math.random() * 20 + 10;
+        const animationDelay = Math.random() * 5;
+        
+        element.style.width = `${size}px`;
+        element.style.height = `${size}px`;
+        element.style.left = `${left}%`;
+        element.style.animationDuration = `${animationDuration}s`;
+        element.style.animationDelay = `${animationDelay}s`;
+        
+        container.appendChild(element);
+      }
+    }
+
+    function setupScrollAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, observerOptions);
+      
+      // Observe cards for animation
+      const homeCards = document.querySelectorAll('.home-card');
+      const dataCards = document.querySelectorAll('.data-card');
+      
+      homeCards.forEach(card => observer.observe(card));
+      dataCards.forEach(card => observer.observe(card));
+    }
+
+    function loadHomeData() {
+      // Load achievements for home page (4x2 grid) in reverse order
+      const achievementsUrl = BASE_URL + '0';
+      fetch(achievementsUrl)
+        .then(res => res.text())
+        .then(csv => {
+          const rows = csv.split("\n").map(r => r.split(","));
+          const container = document.getElementById("home-achievements");
+          container.innerHTML = "";
+      
+          // Take only first 8 items for 4x2 grid in reverse order (newest first)
+          rows.slice(1).reverse().slice(0, 8).forEach(row => {
+            const [id, title, img, desc] = row;
+      
+            const card = document.createElement("div");
+            card.className = "home-card";
+            card.innerHTML = `
+              <img src="${img}" alt="${title}" />
+              <div class="home-card-content">
+                <h4>${title}</h4>
+                <p>${desc.substring(0, 50)}...</p>
+              </div>
+            `;
+      
+            container.appendChild(card);
+          });
+          
+          // Set up animations for newly loaded cards
+          setTimeout(() => {
+            const newCards = document.querySelectorAll('.home-card');
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('animate');
+                }
+              });
+            }, { threshold: 0.1 });
+            
+            newCards.forEach(card => observer.observe(card));
+          }, 100);
+        })
+        .catch(err => console.error("Error loading achievements:", err));
+      
+      // Load programs for home page (4x2 grid) in reverse order
+      const programsUrl = BASE_URL + '1437081300';
+      fetch(programsUrl)
+        .then(res => res.text())
+        .then(csv => {
+          const rows = csv.split("\n").map(r => r.split(","));
+          const container = document.getElementById("home-programs");
+          container.innerHTML = "";
+      
+          // Take only first 8 items for 4x2 grid in reverse order (newest first)
+          rows.slice(1).reverse().slice(0, 8).forEach(row => {
+            const [id, title, img, desc] = row;
+      
+            const card = document.createElement("div");
+            card.className = "home-card";
+            card.innerHTML = `
+              <img src="${img}" alt="${title}" />
+              <div class="home-card-content">
+                <h4>${title}</h4>
+                <p>${desc.substring(0, 50)}...</p>
+              </div>
+            `;
+      
+            container.appendChild(card);
+          });
+          
+          // Set up animations for newly loaded cards
+          setTimeout(() => {
+            const newCards = document.querySelectorAll('.home-card');
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('animate');
+                }
+              });
+            }, { threshold: 0.1 });
+            
+            newCards.forEach(card => observer.observe(card));
+          }, 100);
+        })
+        .catch(err => console.error("Error loading programs:", err));
+    }
+
+    function loadAchievementsData() {
+      const achievementsUrl = BASE_URL + '0';
+      fetch(achievementsUrl)
+        .then(res => res.text())
+        .then(csv => {
+          const rows = csv.split("\n").map(r => r.split(","));
+          const container = document.getElementById("achievements-content");
+          container.innerHTML = "";
+      
+          // Display all achievements in reverse order (newest first)
+          rows.slice(1).reverse().forEach(row => {
+            const [id, title, img, desc] = row;
+      
+            const card = document.createElement("div");
+            card.className = "data-card";
+            card.innerHTML = `
+              <img src="${img}" alt="${title}" />
+              <div class="data-card-content">
+                <h3>${title}</h3>
+                <p>${desc}</p>
+              </div>
+            `;
+      
+            container.appendChild(card);
+          });
+          
+          // Set up animations for newly loaded cards
+          setTimeout(() => {
+            const newCards = document.querySelectorAll('.data-card');
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('animate');
+                }
+              });
+            }, { threshold: 0.1 });
+            
+            newCards.forEach(card => observer.observe(card));
+          }, 100);
+        })
+        .catch(err => console.error("Error loading achievements:", err));
+    }
+
+    function loadProgramsData() {
+      const programsUrl = BASE_URL + '1437081300';
+      fetch(programsUrl)
+        .then(res => res.text())
+        .then(csv => {
+          const rows = csv.split("\n").map(r => r.split(","));
+          const container = document.getElementById("programs-content");
+          container.innerHTML = "";
+      
+          // Display all programs in reverse order (newest first)
+          rows.slice(1).reverse().forEach(row => {
+            const [id, title, img, desc] = row;
+      
+            const card = document.createElement("div");
+            card.className = "data-card";
+            card.innerHTML = `
+              <img src="${img}" alt="${title}" />
+              <div class="data-card-content">
+                <h3>${title}</h3>
+                <p>${desc}</p>
+              </div>
+            `;
+      
+            container.appendChild(card);
+          });
+          
+          // Set up animations for newly loaded cards
+          setTimeout(() => {
+            const newCards = document.querySelectorAll('.data-card');
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('animate');
+                }
+              });
+            }, { threshold: 0.1 });
+            
+            newCards.forEach(card => observer.observe(card));
+          }, 100);
+        })
+        .catch(err => console.error("Error loading programs:", err));
+    }
+  </script>
+</body>
+</html>
